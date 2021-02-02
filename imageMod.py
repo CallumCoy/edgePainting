@@ -14,6 +14,9 @@ COLOURTARGET = 'colour.jpg'
 #Min Res you want an image to be. NOTE: 4K will cause opencv to fail
 XRES, YRES = 2560, 1080
 
+#used to determine the cutoff points for the canny thresholds.
+MAXCUTOFF, MINCUTOFF = 0.05, 0.45
+
 errorRep = []
 
 target = BASEDIR + INPUT
@@ -87,14 +90,14 @@ for i, imgLoc in enumerate(targets):
         histogram = cv2.calcHist([gray], [0], None, [256], [0,256])
         
         count = 0
-        cutOff = 0.05 * ogImg.shape[1] * ogImg.shape[0]
+        cutOff = MAXCUTOFF * ogImg.shape[1] * ogImg.shape[0]
         
         for i in reversed(range(len(histogram))):
                         
             count += histogram[i][0]
             
             if cutOff < count:
-                lowThresh = int(0.45 * i)
+                lowThresh = int(MINCUTOFF * i)
                 maxThresh = i
                 break
         
