@@ -3,7 +3,7 @@ A simple program that takes an folder of images and tracks the edges then maps i
 
 This project contains 1 main program, and 2 scripts that may prove usful in fixing issues from editing the program.  The main program simply takes all images from a file and maps a another image to the edges that were detected, you can see the pre in Backgrounds and the afters in BackgroundOut.  Despite trying to make the input dynamic the program really struggles when a image lacks well defined edges.  It also has a long runtime for a 1920 x 1080 image it takes ~16.5 seconds and for a 2560 x1080 image it takes ~20 seconds.  The main time sink is mapping the image with the colour.
 
-Key features that the main program has:
+# Key features that the main program has:
 - Taking the histogram of an image, and dynamically generate the sobel low and high thresholds.
 - Multiply the intesity of the edge by the the colour on the colour map.
 - Skips files that it thinks it has already done.
